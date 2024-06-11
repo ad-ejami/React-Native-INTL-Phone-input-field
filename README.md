@@ -1,23 +1,26 @@
-# React-Native-INTL-Phone-Input
-It's an international phone input with phone mask. 
+# React-Native-INTL-Phone-field
 
-![](mgif.gif)
+It's an international phone input component with phone mask for Android and iOS.
 
+![demo sample](mgif.gif)
 
-# USAGE
+## USAGE
 
-install npm library
-```
+Install npm library
+
+```node
 npm install react-native-intl-phone-input
 ```
 
-
 İmport library
-```
+
+```js
 import IntlPhoneInput from 'react-native-intl-phone-input';
 ```
-use component
-```
+
+Use component
+
+```js
   onChangeText = ({dialCode, unmaskedPhoneNumber, phoneNumber, isVerified}) => {
     console.log(dialCode, unmaskedPhoneNumber, phoneNumber, isVerified);
   };
@@ -30,10 +33,9 @@ use component
   }
 ```
 
-
-
 Custom Modal Example
-```
+
+```js
  renderCustomModal=(modalVisible, countries, onCountryChange) => (
     <Modal visible={modalVisible}>
       <SafeAreaView style={{ flex: 1 }}>
@@ -71,8 +73,6 @@ Custom Modal Example
 
 ```
 
-
-
 Supported Languages |  |
 --- | --- |
 TR | Turkish |
@@ -80,10 +80,9 @@ LT | Lithuanian |
 EN | English |
 RU | Russian |
 
-
-
 prop names |type |default value | comment 
 --- | --- | --- | --- 
+countriesData | Array | | You can upload your own country information 
 lang | String |  | Translate country name on modal
 placeholder | String |  | This prop change the phone input placeholder
 defaultCountry | String | TR | You can change your default country code 
@@ -104,3 +103,8 @@ disableCountryChange | Bool | false | This prop is about disable open select cou
 renderAction | Function |  | This prop attaching a component right of phone input
 placeholderTextColor | String | black | This prop allows you to assign a color to the placeholderText
 
+## License
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ad-ejami/React-Native-INTL-Phone-field/blob/master/LICENSE)
+
+Based on [React-Native-INTL-Phone-input](https://github.com/MuhammedAlmaz/React-Native-INTL-Phone-Input)

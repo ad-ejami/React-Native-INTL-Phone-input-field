@@ -16,7 +16,8 @@ import data from './Countries';
 export default class IntlPhoneInput extends React.Component {
   constructor(props) {
     super(props);
-    const defaultCountry = data.filter((obj) => obj.code === props.defaultCountry)[0] || data.filter((obj) => obj.code === 'TR')[0];
+    const countriesInfo = props.countriesData || data;
+    const defaultCountry = countriesInfo.filter((obj) => obj.code === props.defaultCountry)[0] || countriesInfo.filter((obj) => obj.code === 'TR')[0];
     this.state = {
       defaultCountry,
       flag: defaultCountry.flag,
@@ -24,7 +25,7 @@ export default class IntlPhoneInput extends React.Component {
       dialCode: defaultCountry.dialCode,
       phoneNumber: '',
       mask: props.mask || defaultCountry.mask,
-      countryData: data,
+      countryData: countriesInfo,
       selectedCountry:defaultCountry,
       placeholderTextColor: 'grey'
     };
@@ -75,7 +76,7 @@ export default class IntlPhoneInput extends React.Component {
   hideModal = () => this.setState({ modalVisible: false });
 
   onCountryChange = async (code) => {
-    const countryData = await data;
+    const countryData = await this.state.countryData;
     try {
       const country = await countryData.filter((obj) => obj.code === code)[0];
       this.setState({
@@ -101,7 +102,7 @@ export default class IntlPhoneInput extends React.Component {
   filterCountries = (value) => {
    const { lang
   } = this.props;
-    const countryData = data.filter((obj) => (obj[lang?.toLowerCase()??"en"]?.indexOf(value) > -1 || obj.dialCode.indexOf(value) > -1));
+    const countryData = this.state.countryData.filter((obj) => (obj[lang?.toLowerCase()??"en"]?.indexOf(value) > -1 || obj.dialCode.indexOf(value) > -1));
     this.setState({ countryData });
   }
 
@@ -228,7 +229,8 @@ IntlPhoneInput.propTypes = {
   searchIconStyle: PropTypes.object,
   disableCountryChange: PropTypes.bool,
   inputRef: PropTypes.object,
-  placeholderTextColor: PropTypes.string
+  placeholderTextColor: PropTypes.string,
+  countriesData: PropTypes.array
 };
 
 const styles = StyleSheet.create({
