@@ -1,4 +1,4 @@
-# React-Native-INTL-Phone-field
+# React-Native-INTL-Phone-input-field
 
 It's an international phone input component with phone mask for Android and iOS.
 
@@ -9,13 +9,13 @@ It's an international phone input component with phone mask for Android and iOS.
 Install npm library
 
 ```node
-npm install react-native-intl-phone-input
+npm install react-native-intl-phone-input-field
 ```
 
 İmport library
 
 ```js
-import IntlPhoneInput from 'react-native-intl-phone-input';
+import IntlPhoneInput from 'react-native-intl-phone-input-field';
 ```
 
 Use component
@@ -79,6 +79,8 @@ TR | Turkish |
 LT | Lithuanian |
 EN | English |
 RU | Russian |
+
+
 
 prop names |type |default value | comment 
 --- | --- | --- | --- 
