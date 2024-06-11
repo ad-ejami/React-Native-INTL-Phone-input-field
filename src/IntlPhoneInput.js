@@ -97,12 +97,14 @@ export default class IntlPhoneInput extends React.Component {
         selectedCountry:defaultCountry
       });
     }
+    if (typeof this.props.onCountryChange === 'function')
+      this.props.onCountryChange(this.state.selectedCountry?.code, this.state.phoneNumber);
   }
 
   filterCountries = (value) => {
    const { lang
   } = this.props;
-    const countryData = this.state.countryData.filter((obj) => (obj[lang?.toLowerCase()??"en"]?.indexOf(value) > -1 || obj.dialCode.indexOf(value) > -1));
+    const countryData = this.state.countryData.filter((obj) => (obj[lang?.toLowerCase()??"en"]?.toLowerCase().indexOf(value.toLowerCase()) > -1 || obj.dialCode.indexOf(value) > -1));
     this.setState({ countryData });
   }
 
